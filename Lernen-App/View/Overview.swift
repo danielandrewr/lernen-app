@@ -24,6 +24,10 @@ struct Overview: View {
                     HeaderView()
                 }
             }
+            
+            LazyVStack(spacing: 25) {
+                
+            }
         }
         .ignoresSafeArea(.container, edges: .top)
     }

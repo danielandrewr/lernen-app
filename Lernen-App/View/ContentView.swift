@@ -14,11 +14,13 @@ struct ContentView: View {
                 .tabItem {
                     Image(systemName: "house")
                     Text("Overview")
+                        .font(.system(size: 16))
                 }
             JourneyView()
                 .tabItem {
                     Image(systemName: "chart.bar.doc.horizontal")
                     Text("Journey")
+                        .font(.system(size: 16))
                 }
         }
     }
