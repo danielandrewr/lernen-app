@@ -39,9 +39,9 @@ struct ServePathData<Content: View, T>: View where T: NSManagedObject {
                 .fontWeight(.semibold)
                 .foregroundColor(Color.Primary)
             
-            Text("Or perhaps try clicking the plus button..")
+            Text("Or perhaps try clicking the plus button 🤔")
                 .font(.system(size: 14))
-                .fontWeight(.medium)
+                .fontWeight(.regular)
                 .foregroundColor(Color.Primary)
                 .padding(.init(top: 5, leading: 0, bottom: 0, trailing: 0))
         }
