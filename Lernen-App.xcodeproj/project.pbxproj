@@ -22,6 +22,7 @@
 		26529CD8288FA5F1003170BD /* TimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26529CD7288FA5F1003170BD /* TimeViewModel.swift */; };
 		26529CDA288FAC25003170BD /* ServePathData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26529CD9288FAC25003170BD /* ServePathData.swift */; };
 		26529CDC288FB969003170BD /* AddNewPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26529CDB288FB969003170BD /* AddNewPath.swift */; };
+		26529CE4288FDAB3003170BD /* Overview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26529CE3288FDAB3003170BD /* Overview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		26529CD7288FA5F1003170BD /* TimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeViewModel.swift; sourceTree = "<group>"; };
 		26529CD9288FAC25003170BD /* ServePathData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServePathData.swift; sourceTree = "<group>"; };
 		26529CDB288FB969003170BD /* AddNewPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPath.swift; sourceTree = "<group>"; };
+		26529CE3288FDAB3003170BD /* Overview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Overview.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				26529CB5288FA3B9003170BD /* ContentView.swift */,
 				26529CD3288FA595003170BD /* JourneyView.swift */,
 				26529CDB288FB969003170BD /* AddNewPath.swift */,
+				26529CE3288FDAB3003170BD /* Overview.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 				26529CCE288FA54F003170BD /* ColorHelper.swift in Sources */,
 				26529CD0288FA570003170BD /* PathViewModel.swift in Sources */,
 				26529CCD288FA54F003170BD /* FrameHelper.swift in Sources */,
+				26529CE4288FDAB3003170BD /* Overview.swift in Sources */,
 				26529CB6288FA3B9003170BD /* ContentView.swift in Sources */,
 				26529CD4288FA595003170BD /* JourneyView.swift in Sources */,
 				26529CDA288FAC25003170BD /* ServePathData.swift in Sources */,
