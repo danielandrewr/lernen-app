@@ -12,9 +12,11 @@ struct Overview: View {
     @StateObject var timeViewModel = TimeViewModel()
     @StateObject var pathViewModel = PathViewModel()
     
+    @State var activeJourney: String = "RxSwift"
+    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            LazyVStack(spacing: 5, pinnedViews: [.sectionHeaders]) {
+            LazyVStack(spacing: 20, pinnedViews: [.sectionHeaders]) {
                 Section {
                     CircularProgressBar()
                         .padding()
@@ -23,37 +25,30 @@ struct Overview: View {
                 }
             }
         }
-        
-        
+        .ignoresSafeArea(.container, edges: .top)
     }
     
     func HeaderView() -> some View {
-        HStack(alignment: .top, spacing: 5) {
-            VStack(alignment: .leading) {
+        HStack(spacing: 10) {
+            VStack(alignment: .leading, spacing: 10) {
                 Text("Overview")
-                    .font(.system(size: 24))
-                    .fontWeight(.semibold)
+                    .font(.largeTitle.bold())
                     .foregroundColor(Color.Primary)
-                    .padding(.init(top: 16, leading: 16, bottom: 1, trailing: 0))
-                    .leadingHelper()
                 
                 HStack {
-                    Text("Active Journey: ")
-                        .font(.system(size: 18))
-                        .fontWeight(.medium)
-                        .foregroundColor(Color.Primary)
-                        .padding(.leading)
-                        .leadingHelper()
+                    Text("Active Journey: \(activeJourney)")    .leadingHelper()
                     
                     Text(Date().formatted(date: .abbreviated, time: .omitted))
-                        .font(.system(size: 18))
-                        .fontWeight(.regular)
                         .foregroundColor(Color.gray)
-                        .padding()
+                        .padding(.bottom)
+                        .trailingHelper()
                 }
             }
-    
+            .leadingHelper()
         }
+        .padding()
+        .padding(.top, safeAreaBounds().top)
+        .background(Color.white)
     }
 }
 
