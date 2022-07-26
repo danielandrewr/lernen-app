@@ -9,7 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        JourneyView()
+        TabView {
+            Overview()
+                .tabItem {
+                    Image(systemName: "house")
+                    Text("Overview")
+                }
+            JourneyView()
+                .tabItem {
+                    Image(systemName: "chart.bar.doc.horizontal")
+                    Text("Journey")
+                }
+        }
     }
 }
     
