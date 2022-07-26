@@ -11,6 +11,8 @@ class PathViewModel: ObservableObject {
     
     @Published var todaysPath: [Path]?
     
+    @Published var addNewPath: Bool = false
+    
     init() {
 //        filterTodaysPaths()
     }
