@@ -1,0 +1,229 @@
+//
+//  ContentView.swift
+//  Lernen
+//
+//  Created by Daniel Roong on 21/07/22.
+//
+
+import SwiftUI
+
+struct JourneyView: View {
+    
+    // MARK: Defines the viewModels
+//    @StateObject var pathModel = PathViewModel()
+    @StateObject var timeModel = TimeViewModel()
+    @StateObject var pathModel: PathViewModel = PathViewModel()
+    
+    // MARK: Namespaces
+    @Namespace var focus
+    
+    // MARK: TabBar View
+    var body: some View {
+        TabView() {
+//            Overview()
+//                .tabItem {
+//                    Image(systemName: "house")
+//                    Text("Overview")
+//                }
+            JourneyView()
+                .tabItem {
+                    Image(systemName: "chart.bar.doc.horizontal")
+                    Text("Journey")
+                }
+//            ProfileView()
+//                .tabItem {
+//                    Image(systemName: "person")
+//                    Text("Profile")
+//                }
+        }
+    }
+    
+    // MARK: Home View
+    func HomeView() -> some View {
+        VStack(alignment: .center, spacing: 25) {
+            Text("Home View")
+                .padding()
+            
+            Image(systemName: "house")
+                .resizable()
+                .frame(width: 50, height: 50, alignment: .center)
+        }
+    }
+    
+    // MARK: Profile View
+    func ProfileView() -> some View {
+        VStack(alignment: .center, spacing: 25) {
+            Text("Profile View")
+                .padding()
+            
+            Image(systemName: "person")
+                .resizable()
+                .frame(width: 50, height: 50, alignment: .center)
+        }
+    }
+    
+    // MARK: Journey View
+    func JourneyView() -> some View {
+        ScrollView(.vertical, showsIndicators: false) {
+            LazyVStack(spacing: 5, pinnedViews: [.sectionHeaders]) {
+                Section {
+                    ScrollView(.horizontal ,showsIndicators: false) {
+                        HStack(spacing: 10) {
+                            
+                            // MARK: Displays every days data from time viewModel and embed it in a VStack
+                            ForEach(timeModel.currentWeek, id: \.self) { days in
+                                VStack(spacing: 10) {
+                                    // MARK: Transform data from date to readable format
+                                    Text(timeModel.extractDate(from: days, format: "dd"))
+                                        .font(.system(size: 14))
+                                        .fontWeight(timeModel.isDateToday(date: days) ? .bold : .regular)
+                                        .foregroundColor(timeModel.isDateToday(date: days) ? Color.white : Color.Primary)
+                                    
+                                    Text(timeModel.extractDate(from: days, format: "EEE"))
+                                        .font(.system(size: 12))
+                                        .fontWeight(timeModel.isDateToday(date: days) ? .bold : .regular)
+                                        .foregroundColor(timeModel.isDateToday(date: days) ? Color.white : Color.Primary)
+                                }
+                                
+                                // MARK: Applies styling for capsule according to today's date
+                                .foregroundStyle(timeModel.isDateToday(date: days) ? .primary : .secondary)
+                                .foregroundColor(timeModel.isDateToday(date: days) ? .white : Color.Primary)
+                                .frame(width: 45, height: 80)
+                                    .background(
+                                        ZStack {
+                                            if timeModel.isDateToday(date: days) {
+                                                Capsule()
+                                                    .fill(Color.Primary)
+                                                    .matchedGeometryEffect(id: "todaysdate", in: focus)
+                                            }
+                                        
+                                        })
+                                .contentShape(Capsule())
+                                
+                                // MARK: Dissapearing animation on capsule clicked
+                                .onTapGesture {
+                                    withAnimation {
+                                        timeModel.today = days
+                                    }
+                                }
+                            }
+                        }
+                        .padding(.horizontal)
+                        .centerHelper()
+                    }
+                    
+                    PathView()
+                } header: {
+                    HeaderView()
+                }
+            }
+        }
+        .ignoresSafeArea(.container, edges: .top)
+    }
+    
+    // MARK: Paths View
+    func PathView() -> some View {
+        LazyVStack(spacing: 25) {
+            FilterData(datePredicate: timeModel.today) { (object: Path) in
+                PathCardComponent(path: object)
+            }
+        }
+        .padding()
+        .padding(.top)
+    }
+    
+    // MARK: HeaderView for Journey's View
+    func HeaderView() -> some View {
+        
+        HStack {
+            VStack(alignment: .leading, spacing: 10) {
+                Text(Date().formatted(date: .abbreviated, time: .omitted))
+                    .foregroundColor(Color.gray)
+                    .centerHelper()
+                
+                Text("Daniel's Journey")
+                    .font(.largeTitle.bold())
+                    .foregroundColor(Color.Primary)
+                    .centerHelper()
+                    
+            }
+            
+//            Button {
+//
+//            } label: {
+//                Image(systemName: "gearshape.fill")
+//                    .resizable()
+//                    .aspectRatio(contentMode: .fit)
+//                    .frame(width: 34, height: 34)
+//                    .foregroundColor(Color.Primary)
+//            }
+            
+    
+        .padding()
+        }
+        .padding(.top, safeAreaBounds().top)
+        .background(Color.white)
+    }
+    
+    func PathCardComponent(path: Path) -> some View {
+        HStack(alignment: .top, spacing: 30) {
+            VStack() {
+                HStack(alignment: .top, spacing: 10) {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text(path.pathName ?? "No Value")
+                            .font(.title2.weight(.semibold))
+                            .foregroundColor(Color.Secondary)
+                        
+                        Text(path.pathDescription ?? "No Description")
+                            .font(.subheadline.weight(.regular))
+                            .foregroundColor(Color.white)
+                    }
+                    .leadingHelper()
+                    
+                    Button {
+                        
+                    } label: {
+                        Image(systemName: "checkmark.circle.fill")
+                            .resizable()
+                            .foregroundColor(Color.white)
+                            .padding(10)
+                            .frame(width: 50, height: 50, alignment: .center)
+                    }
+                }
+            }
+            .foregroundColor(pathModel.isPathInCurrentHour(date: path.pathDate ?? Date()) ? Color.white : Color.Secondary)
+            .padding(pathModel.isPathInCurrentHour(date: path.pathDate ?? Date()) ? 15 : 0)
+            .padding(.bottom, pathModel.isPathInCurrentHour(date: path.pathDate ?? Date()) ? 0 : 10)
+            .trailingHelper()
+            .background(
+                Color.Tertiary
+                    .cornerRadius(25)
+                    .opacity(pathModel.isPathInCurrentHour(date: path.pathDate ?? Date()) ? 1 : 0)
+            )
+            
+            VStack (spacing: 10) {
+                Circle()
+                    .fill(pathModel.isPathInCurrentHour(date: path.pathDate ?? Date()) ? Color.Primary : Color.clear)
+                    .frame(width: 15, height: 15)
+                    .background(
+                        Circle()
+                            .stroke(Color.Primary, lineWidth: 1)
+                            .padding(-3)
+                    )
+                    .scaleEffect(pathModel.isPathInCurrentHour(date: path.pathDate ?? Date()) ? 0.7 : 1)
+            
+                Rectangle()
+                    .fill(Color.Primary)
+                    .frame(width: 5)
+            }
+            
+        }
+        .trailingHelper()
+    }
+}
+
+struct Journey_Previews: PreviewProvider {
+    static var previews: some View {
+        JourneyView()
+    }
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Journey" representedClassName="Journey" syncable="YES" codeGenerationType="class">
+        <attribute name="journeyDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="journeyDescription" optional="YES" attributeType="String"/>
+        <attribute name="journeyFinishedPath" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="journeyId" optional="YES" attributeType="String"/>
+        <attribute name="journeyName" optional="YES" attributeType="String"/>
+        <attribute name="journeyTotalPath" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="Path" representedClassName="Path" syncable="YES" codeGenerationType="class">
+        <attribute name="isFinished" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="pathDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="pathDescription" optional="YES" attributeType="String"/>
+        <attribute name="pathId" optional="YES" attributeType="String"/>
+        <attribute name="pathName" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="Path" positionX="-63" positionY="-18" width="128" height="104"/>
+        <element name="Journey" positionX="-54" positionY="27" width="128" height="119"/>
+    </elements>
+</model>
