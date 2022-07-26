@@ -123,7 +123,7 @@ struct JourneyView: View {
     // MARK: Paths View
     func PathView() -> some View {
         LazyVStack(spacing: 25) {
-            FilterData(datePredicate: timeModel.today) { (object: Path) in
+            ServePathData(datePredicate: timeModel.today) { (object: Path) in
                 PathCardComponent(path: object)
             }
         }

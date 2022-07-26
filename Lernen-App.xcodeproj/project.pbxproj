@@ -20,7 +20,7 @@
 		26529CD4288FA595003170BD /* JourneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26529CD3288FA595003170BD /* JourneyView.swift */; };
 		26529CD6288FA5C8003170BD /* CircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26529CD5288FA5C8003170BD /* CircularProgressBar.swift */; };
 		26529CD8288FA5F1003170BD /* TimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26529CD7288FA5F1003170BD /* TimeViewModel.swift */; };
-		26529CDA288FAC25003170BD /* FilterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26529CD9288FAC25003170BD /* FilterData.swift */; };
+		26529CDA288FAC25003170BD /* ServePathData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26529CD9288FAC25003170BD /* ServePathData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +38,7 @@
 		26529CD3288FA595003170BD /* JourneyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JourneyView.swift; sourceTree = "<group>"; };
 		26529CD5288FA5C8003170BD /* CircularProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressBar.swift; sourceTree = "<group>"; };
 		26529CD7288FA5F1003170BD /* TimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeViewModel.swift; sourceTree = "<group>"; };
-		26529CD9288FAC25003170BD /* FilterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterData.swift; sourceTree = "<group>"; };
+		26529CD9288FAC25003170BD /* ServePathData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServePathData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				26529CD5288FA5C8003170BD /* CircularProgressBar.swift */,
-				26529CD9288FAC25003170BD /* FilterData.swift */,
+				26529CD9288FAC25003170BD /* ServePathData.swift */,
 			);
 			path = ViewComponent;
 			sourceTree = "<group>";
@@ -214,7 +214,7 @@
 				26529CCD288FA54F003170BD /* FrameHelper.swift in Sources */,
 				26529CB6288FA3B9003170BD /* ContentView.swift in Sources */,
 				26529CD4288FA595003170BD /* JourneyView.swift in Sources */,
-				26529CDA288FAC25003170BD /* FilterData.swift in Sources */,
+				26529CDA288FAC25003170BD /* ServePathData.swift in Sources */,
 				26529CD8288FA5F1003170BD /* TimeViewModel.swift in Sources */,
 				26529CB4288FA3B9003170BD /* Lernen_AppApp.swift in Sources */,
 				26529CC0288FA3BB003170BD /* Lernen_App.xcdatamodeld in Sources */,

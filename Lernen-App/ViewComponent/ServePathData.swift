@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-struct FilterData<Content: View, T>: View where T: NSManagedObject {
+struct ServePathData<Content: View, T>: View where T: NSManagedObject {
     
     @FetchRequest var fetchRequest: FetchedResults<T>
     let content: (T) -> Content
