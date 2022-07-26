@@ -16,25 +16,8 @@ struct JourneyView: View {
     // MARK: Namespaces
     @Namespace var focus
     
-    // MARK: TabBar View
     var body: some View {
-        TabView() {
-//            Overview()
-//                .tabItem {
-//                    Image(systemName: "house")
-//                    Text("Overview")
-//                }
-            JourneyView()
-                .tabItem {
-                    Image(systemName: "chart.bar.doc.horizontal")
-                    Text("Journey")
-                }
-//            ProfileView()
-//                .tabItem {
-//                    Image(systemName: "person")
-//                    Text("Profile")
-//                }
-        }
+        JourneyView()
     }
     
     // MARK: Home View

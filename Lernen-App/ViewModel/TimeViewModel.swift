@@ -42,4 +42,10 @@ class TimeViewModel: ObservableObject {
     public func isDateToday(date: Date) -> Bool {
         return Calendar.current.isDate(today, inSameDayAs: date)
     }
+    
+    public func fromDateToString(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        return formatter.string(from: date)
+    }
 }
