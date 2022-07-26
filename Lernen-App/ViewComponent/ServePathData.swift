@@ -26,11 +26,25 @@ struct ServePathData<Content: View, T>: View where T: NSManagedObject {
                     self.content(object)
                 }
             } else {
-                Text("Yohoo!!! Rest easy, no learning today :)")
-                    .padding()
-                    .font(.system(size: 18))
-                    .offset(y: 100)
+                PathIsEmptyView()
             }
         }
+    }
+    
+    func PathIsEmptyView() -> some View {
+        VStack(alignment: .center, spacing: 0) {
+            
+            Text("Yohoo!!! Rest easy, No Learning Today!")
+                .font(.system(size: 18))
+                .fontWeight(.semibold)
+                .foregroundColor(Color.Primary)
+            
+            Text("Or perhaps try clicking the plus button..")
+                .font(.system(size: 14))
+                .fontWeight(.medium)
+                .foregroundColor(Color.Primary)
+                .padding(.init(top: 5, leading: 0, bottom: 0, trailing: 0))
+        }
+        .centerHelper()
     }
 }

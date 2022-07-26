@@ -21,5 +21,4 @@ class PathViewModel: ObservableObject {
         
         return getHour == currentHour
     }
-
 }
