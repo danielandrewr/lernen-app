@@ -10,9 +10,8 @@ import SwiftUI
 struct JourneyView: View {
     
     // MARK: Defines the viewModels
-//    @StateObject var pathModel = PathViewModel()
     @StateObject var timeModel = TimeViewModel()
-    @StateObject var pathModel: PathViewModel = PathViewModel()
+    @StateObject var pathModel = PathViewModel()
     
     // MARK: Namespaces
     @Namespace var focus
@@ -135,32 +134,27 @@ struct JourneyView: View {
     // MARK: HeaderView for Journey's View
     func HeaderView() -> some View {
         
-        HStack {
+        HStack(spacing: 10) {
             VStack(alignment: .leading, spacing: 10) {
-                Text(Date().formatted(date: .abbreviated, time: .omitted))
-                    .foregroundColor(Color.gray)
-                    .centerHelper()
-                
-                Text("Daniel's Journey")
+                Text("Journey")
                     .font(.largeTitle.bold())
                     .foregroundColor(Color.Primary)
-                    .centerHelper()
-                    
             }
+            .leadingHelper()
             
-//            Button {
-//
-//            } label: {
-//                Image(systemName: "gearshape.fill")
-//                    .resizable()
-//                    .aspectRatio(contentMode: .fit)
-//                    .frame(width: 34, height: 34)
-//                    .foregroundColor(Color.Primary)
-//            }
-            
-    
-        .padding()
+            Button {
+
+            } label: {
+                Image(systemName: "plus")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 20, height: 20)
+                    .foregroundColor(Color.Primary)
+                    
+                    .trailingHelper()
+            }
         }
+        .padding()
         .padding(.top, safeAreaBounds().top)
         .background(Color.white)
     }
