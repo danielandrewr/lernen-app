@@ -143,7 +143,7 @@ struct JourneyView: View {
             .leadingHelper()
             
             Button {
-
+                pathModel.addNewPath.toggle()
             } label: {
                 Image(systemName: "plus")
                     .resizable()
@@ -153,6 +153,14 @@ struct JourneyView: View {
                     
                     .trailingHelper()
             }
+            // MARK: Present AddNewPath View on Click using sheet to prevent layout errors
+            .sheet(isPresented: $pathModel.addNewPath) {
+                AddNewPath()
+            }
+            
+            //.popover(isPresented: $pathModel.addNewPath, arrowEdge: .bottom) {
+            //      AddNewPath()
+            //  }
         }
         .padding()
         .padding(.top, safeAreaBounds().top)
