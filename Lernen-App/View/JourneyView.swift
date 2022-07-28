@@ -141,10 +141,6 @@ struct JourneyView: View {
             .sheet(isPresented: $pathModel.addNewPath) {
                 AddNewPath()
             }
-            
-            //.popover(isPresented: $pathModel.addNewPath, arrowEdge: .bottom) {
-            //      AddNewPath()
-            //  }
         }
         .padding()
         .padding(.top, safeAreaBounds().top)

@@ -61,8 +61,6 @@ struct AddNewPath: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-//                        pathViewModel.addNewPath(pathName: self.pathName, pathDescription: self.pathDescription, pathDate: self.pathDate, notificationEnabled: self.enableNotification)
-                        
                         let newPath = Path(context: persistentContainer)
                         newPath.pathId = UUID().uuidString
                         newPath.pathName = pathName
@@ -71,7 +69,6 @@ struct AddNewPath: View {
                         newPath.isFinished = false
                         newPath.notificationEnabled = enableNotification
 
-                        print(newPath)
                         do {
                             try persistentContainer.save()
                         } catch let error as NSError {
