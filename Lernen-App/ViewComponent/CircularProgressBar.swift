@@ -10,7 +10,7 @@ import SwiftUI
 struct CircularProgressBar: View {
     
     // MARK: ProgressBar Indicators
-    @State var progress: Float = 0.59
+    @State var progress: Float
     @State var circleProgress: Float = 0.0
     
     var body: some View {
@@ -57,7 +57,7 @@ struct CircularProgressBar: View {
 
 struct CircularProgressBar_Previews: PreviewProvider {
     static var previews: some View {
-        CircularProgressBar()
+        CircularProgressBar(progress: 0.55)
             .frame(width: 250, height: 250, alignment: .center)
     }
 }

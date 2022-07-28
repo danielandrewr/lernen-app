@@ -13,13 +13,19 @@ struct Overview: View {
     @StateObject var timeViewModel = TimeViewModel()
     @StateObject var pathViewModel = PathViewModel()
     
+    var progress: Float {
+        guard let finishedPath = journeyViewModel.activeJourney?.journeyFinishedPath else { return 1 }
+        guard let totalPath = journeyViewModel.activeJourney?.journeyTotalPath else { return 1 }
+        return Float(finishedPath / totalPath)
+    }
+    
     @State var activeJourney: String = "RxSwift"
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             LazyVStack(spacing: 20, pinnedViews: [.sectionHeaders]) {
                 Section {
-                    CircularProgressBar()
+                    CircularProgressBar(progress: self.progress)
                         .padding()
                 } header: {
                     HeaderView()
