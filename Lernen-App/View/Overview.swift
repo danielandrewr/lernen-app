@@ -23,11 +23,22 @@ struct Overview: View {
                 } header: {
                     HeaderView()
                 }
+                
+                VStack(spacing: 10) {
+                    
+                }
             }
             
             LazyVStack(spacing: 25) {
-                
+                Section {
+                    Text("Next Journey")
+                        .font(.title2.weight(.semibold))
+                        .foregroundColor(Color.Primary)
+                        .leadingHelper()
+                        .padding()
+                }
             }
+            .leadingHelper()
         }
         .ignoresSafeArea(.container, edges: .top)
     }
