@@ -61,6 +61,7 @@ struct AddNewPath: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         pathViewModel.addNewPath(pathName: self.pathName, pathDescription: self.pathDescription, pathDate: self.pathDate, notificationEnabled: self.enableNotification)
+                        dismissModal()
                     } label: {
                         Text("Add")
                             .foregroundColor(Color.Tertiary)
