@@ -11,6 +11,8 @@ struct AddNewPath: View {
     
     @Environment(\.dismiss) var dismissModal
     
+    @StateObject var pathViewModel = PathViewModel()
+    
     @State var pathName: String = ""
     @State var pathDescription: String = ""
     @State var pathDate: Date = Date()
@@ -58,7 +60,7 @@ struct AddNewPath: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        
+                        pathViewModel.addNewPath(pathName: self.pathName, pathDescription: self.pathDescription, pathDate: self.pathDate, notificationEnabled: self.enableNotification)
                     } label: {
                         Text("Add")
                             .foregroundColor(Color.Tertiary)
