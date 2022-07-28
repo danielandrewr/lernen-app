@@ -13,6 +13,9 @@ struct JourneyView: View {
     @StateObject var timeModel = TimeViewModel()
     @StateObject var pathModel = PathViewModel()
     
+    // MARK: Core Date MOC
+    @Environment(\.managedObjectContext) var persistentContainer
+    
     // MARK: Namespaces
     @Namespace var focus
     
@@ -162,14 +165,32 @@ struct JourneyView: View {
                     }
                     .leadingHelper()
                     
-                    Button {
-                        
-                    } label: {
-                        Image(systemName: "checkmark.circle.fill")
-                            .resizable()
-                            .foregroundColor(Color.white)
-                            .padding(10)
-                            .frame(width: 50, height: 50, alignment: .center)
+                    if !path.isFinished {
+                        Button {
+                            path.isFinished = true
+                            do {
+                                try persistentContainer.save()
+                            } catch let error as NSError {
+                                print(error.localizedDescription)
+                                print("Lernen: Failed to save to context")
+                            }
+                        } label: {
+                            Image(systemName: "checkmark.circle.fill")
+                                .resizable()
+                                .foregroundColor(Color.white)
+                                .padding(10)
+                                .frame(width: 50, height: 50, alignment: .center)
+                        }
+                    } else {
+                        Button {
+                            
+                        } label: {
+                            Image(systemName: "checkmark.circle.fill")
+                                .resizable()
+                                .foregroundColor(Color.green)
+                                .padding(10)
+                                .frame(width: 50, height: 50, alignment: .center)
+                        }
                     }
                 }
             }
