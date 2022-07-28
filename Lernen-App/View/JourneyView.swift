@@ -154,11 +154,11 @@ struct JourneyView: View {
                     VStack(alignment: .leading, spacing: 10) {
                         Text(path.pathName ?? "No Value")
                             .font(.title2.weight(.semibold))
-                            .foregroundColor(Color.Secondary)
+                            .foregroundColor(pathModel.isPathInCurrentHour(date: path.pathDate ?? Date()) ? Color.white : Color.Primary)
                         
                         Text(path.pathDescription ?? "No Description")
                             .font(.subheadline.weight(.regular))
-                            .foregroundColor(Color.white)
+                            .foregroundColor(pathModel.isPathInCurrentHour(date: path.pathDate ?? Date()) ? Color.white : Color.Primary)
                     }
                     .leadingHelper()
                     
