@@ -11,6 +11,8 @@ class JourneyViewModel: ObservableObject {
     @Published var activeJourney: Journey?
     @Published var fetchedJourneys: [Journey]?
     
+    @Published var addNewJourney: Bool = false
+    
     init() {
         
     }

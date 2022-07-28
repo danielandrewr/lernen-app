@@ -40,6 +40,23 @@ struct Overview: View {
             .leadingHelper()
         }
         .ignoresSafeArea(.container, edges: .top)
+        .overlay(
+            Button(action: {
+                self.journeyViewModel.addNewJourney.toggle()
+            }, label: {
+                Image(systemName: "plus")
+                    .padding()
+                    .foregroundColor(Color.white)
+                    .frame(width: 50, height: 50)
+                    .background(
+                        Color.black,
+                        in: Circle()
+                    )
+                    .offset(x: -5, y: -10)
+            })
+            .padding(),
+            alignment: .bottomTrailing
+        )
     }
     
     func HeaderView() -> some View {
