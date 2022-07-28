@@ -28,6 +28,12 @@ struct JourneyCard: View {
                     .leadingHelper()
     
                     // MARK: Could add edit/delete button
+                    
+                    Button {
+                        
+                    } label: {
+                        
+                    }
                 }
             }
             .foregroundColor(Color.Primary)

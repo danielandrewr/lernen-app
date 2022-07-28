@@ -54,6 +54,7 @@ struct JourneyView: View {
                             
                             // MARK: Displays every days data from time viewModel and embed it in a VStack
                             ForEach(timeModel.currentWeek, id: \.self) { days in
+                                
                                 VStack(spacing: 10) {
                                     // MARK: Transform data from date to readable format
                                     Text(timeModel.extractDate(from: days, format: "dd"))
