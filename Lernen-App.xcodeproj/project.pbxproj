@@ -85,8 +85,6 @@
 				26529CC7288FA4EA003170BD /* ViewModel */,
 				26529CC6288FA4E4003170BD /* ViewComponent */,
 				26529CB7288FA3BB003170BD /* Assets.xcassets */,
-				26529CBC288FA3BB003170BD /* Persistence.swift */,
-				26529CBE288FA3BB003170BD /* Lernen_App.xcdatamodeld */,
 				26529CB9288FA3BB003170BD /* Preview Content */,
 			);
 			path = "Lernen-App";
@@ -145,6 +143,8 @@
 		26529CCA288FA502003170BD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				26529CBC288FA3BB003170BD /* Persistence.swift */,
+				26529CBE288FA3BB003170BD /* Lernen_App.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
