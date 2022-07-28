@@ -8,15 +8,14 @@
 import SwiftUI
 import CoreData
 
-struct ServeJourneyData<Content: View, T> where T: NSManagedObject {
+struct ServeJourneyData<Content: View, T>: View where T: NSManagedObject {
     
     @FetchRequest var fetchRequest: FetchedResults<T>
-    
     var content: (T) -> Content
     
     init(activePredicate: Bool, @ViewBuilder contentBuilder: @escaping (T) -> Content) {
         let format = "isActive == %@"
-        let predicate = NSPredicate(format: format, activePredicate)
+        let predicate = NSPredicate(format: format, NSNumber(value: activePredicate))
         
         _fetchRequest = FetchRequest(entity: T.entity(), sortDescriptors: [], predicate: predicate, animation: nil)
         
@@ -39,7 +38,7 @@ struct ServeJourneyData<Content: View, T> where T: NSManagedObject {
         Text("No Active Journey")
             .font(.headline)
             .foregroundColor(Color.Primary)
-            .offset(y: 20)
+            //.offset(y: 20)
             .centerHelper()
     }
 }

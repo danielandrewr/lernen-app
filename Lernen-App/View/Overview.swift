@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Overview: View {
     
+    @StateObject var journeyViewModel = JourneyViewModel()
     @StateObject var timeViewModel = TimeViewModel()
     @StateObject var pathViewModel = PathViewModel()
     
@@ -24,9 +25,7 @@ struct Overview: View {
                     HeaderView()
                 }
                 
-                VStack(spacing: 10) {
-                    
-                }
+                ActiveJourneyView()
             }
             
             LazyVStack(spacing: 25) {
@@ -64,6 +63,53 @@ struct Overview: View {
         .padding()
         .padding(.top, safeAreaBounds().top)
         .background(Color.white)
+    }
+    
+    // MARK: ActiveJourney View
+    func ActiveJourneyView() -> some View {
+        LazyVStack(spacing: 10) {
+            ServeJourneyData(activePredicate: true) { (object: Journey) in
+                JourneyCard(journey: object)
+            }
+        }
+        .padding()
+        .padding(.top)
+    }
+    
+    func JourneyCard(journey: Journey) -> some View {
+        HStack(alignment: .top, spacing: 20) {
+            VStack {
+                HStack(alignment: .top, spacing: 10) {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text(journey.journeyName ?? "No Value")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                            .foregroundColor(Color.white)
+                        Text("\(journey.journeyFinishedPath) of \(journey.journeyTotalPath) Path(s) completed")
+                            .font(.body)
+                            .fontWeight(.medium)
+                            .foregroundColor(Color.white)
+                    }
+                    .leadingHelper()
+    
+                    // MARK: Could add edit/delete button
+                    
+                    Button {
+                        
+                    } label: {
+                        
+                    }
+                }
+            }
+            .foregroundColor(Color.Primary)
+            .padding(15)
+            .leadingHelper()
+            .background(
+                // Maybe add lineargradient?
+                Color.Primary
+                    .cornerRadius(10)
+            )
+        }
     }
 }
 
