@@ -33,6 +33,7 @@ class PathViewModel: ObservableObject {
         newPath.pathDescription = pathDescription
         newPath.pathDate = pathDate
         newPath.isFinished = false
+        newPath.notificationEnabled = notificationEnabled
         saveToContext()
     }
     

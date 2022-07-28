@@ -10,13 +10,14 @@
     </entity>
     <entity name="Path" representedClassName="Path" syncable="YES" codeGenerationType="class">
         <attribute name="isFinished" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="notificationEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="pathDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="pathDescription" optional="YES" attributeType="String"/>
         <attribute name="pathId" optional="YES" attributeType="String"/>
         <attribute name="pathName" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Path" positionX="-63" positionY="-18" width="128" height="104"/>
         <element name="Journey" positionX="-54" positionY="27" width="128" height="119"/>
+        <element name="Path" positionX="-63" positionY="-18" width="128" height="119"/>
     </elements>
 </model>
