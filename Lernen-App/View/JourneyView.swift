@@ -153,7 +153,7 @@ struct JourneyView: View {
     func PathCardComponent(path: Path) -> some View {
         HStack(alignment: .top, spacing: 30) {
             VStack() {
-                HStack(alignment: .top, spacing: 10) {
+                HStack(alignment: .top, spacing: 0) {
                     VStack(alignment: .leading, spacing: 10) {
                         Text(path.pathName ?? "No Value")
                             .font(.title2.weight(.semibold))
@@ -162,36 +162,46 @@ struct JourneyView: View {
                         Text(path.pathDescription ?? "No Description")
                             .font(.subheadline.weight(.regular))
                             .foregroundColor(pathModel.isPathInCurrentHour(date: path.pathDate ?? Date()) ? Color.white : Color.Primary)
+                        
                     }
                     .leadingHelper()
                     
-                    if !path.isFinished {
-                        Button {
-                            path.isFinished = true
-                            do {
-                                try persistentContainer.save()
-                            } catch let error as NSError {
-                                print(error.localizedDescription)
-                                print("Lernen: Failed to save to context")
+                    VStack(alignment: .trailing, spacing: 5) {
+                    
+                        Text("\(path.pathDate?.formatted(date: .omitted, time: .shortened) ?? Date().formatted(date: .omitted, time: .shortened))")
+                            .font(.headline)
+                            .foregroundColor(pathModel.isPathInCurrentHour(date: path.pathDate ?? Date()) ? Color.white : Color.Primary)
+                            .padding(.top, 2.75)
+                            .padding(.trailing, 0)
+                        
+                        if (!path.isFinished) {
+                            if pathModel.isPathInCurrentHour(date: path.pathDate ?? Date()) {
+                                Button {
+                                    path.isFinished = true
+                                    do {
+                                        try persistentContainer.save()
+                                    } catch let error as NSError {
+                                        print(error.localizedDescription)
+                                        print("Lernen: Failed to save to context")
+                                    }
+                                } label: {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .resizable()
+                                        .foregroundColor(Color.white)
+                                        .padding(15)
+                                        .frame(width: 50, height: 50, alignment: .center)
+                                }
                             }
-                        } label: {
-                            Image(systemName: "checkmark.circle.fill")
-                                .resizable()
-                                .foregroundColor(Color.white)
-                                .padding(10)
-                                .frame(width: 50, height: 50, alignment: .center)
-                        }
-                    } else {
-                        Button {
-                            
-                        } label: {
+                        } else {
                             Image(systemName: "checkmark.circle.fill")
                                 .resizable()
                                 .foregroundColor(Color.green)
                                 .padding(10)
                                 .frame(width: 50, height: 50, alignment: .center)
+                            
                         }
                     }
+                    .trailingHelper()
                 }
             }
             .foregroundColor(pathModel.isPathInCurrentHour(date: path.pathDate ?? Date()) ? Color.white : Color.Secondary)
