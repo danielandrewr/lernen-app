@@ -11,10 +11,16 @@ import CoreData
 struct ServePathData<Content: View, T>: View where T: NSManagedObject {
     
     @FetchRequest var fetchRequest: FetchedResults<T>
-    let content: (T) -> Content
+    var content: (T) -> Content
     
     init(datePredicate: Date, @ViewBuilder contentBuilder: @escaping (T) -> Content) {
-        _fetchRequest = FetchRequest(entity: T.entity(), sortDescriptors: [], predicate: nil, animation: nil)
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: datePredicate)
+        let tomorrow = calendar.date(byAdding: .day, value: 1, to: datePredicate)!
+        
+        let format = "pathDate >= %@ AND pathDate < %@"
+        let predicate = NSPredicate(format: format, argumentArray: [today, tomorrow])
+        _fetchRequest = FetchRequest(entity: T.entity(), sortDescriptors: [], predicate: predicate, animation: nil)
         
         self.content = contentBuilder
     }
@@ -30,7 +36,7 @@ struct ServePathData<Content: View, T>: View where T: NSManagedObject {
             }
         }
     }
-    
+        
     func PathIsEmptyView() -> some View {
         VStack(alignment: .center, spacing: 0) {
             
