@@ -19,7 +19,7 @@ struct Overview: View {
         return Float(finishedPath / totalPath)
     }
     
-    @State var activeJourney: String = "RxSwift"
+    @State var activeJourney: String = "MVVM"
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -75,7 +75,15 @@ struct Overview: View {
                     .foregroundColor(Color.Primary)
                 
                 HStack {
-                    Text("Active Journey: \(activeJourney)")    .leadingHelper()
+                    VStack(alignment: .leading) {
+                        Text("Active Journey: ")
+                        Text("\(activeJourney)")
+                            .foregroundColor(Color.Tertiary)
+                            .fontWeight(.semibold)
+                        
+                    }
+                    .leadingHelper()
+
                     
                     Text(Date().formatted(date: .abbreviated, time: .omitted))
                         .foregroundColor(Color.gray)
