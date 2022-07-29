@@ -42,6 +42,8 @@ struct Overview: View {
                         .leadingHelper()
                         .padding()
                 }
+                
+                InactiveJourneyView()
             }
             .leadingHelper()
         }
@@ -92,6 +94,16 @@ struct Overview: View {
     func ActiveJourneyView() -> some View {
         LazyVStack(spacing: 10) {
             ServeJourneyData(activePredicate: true) { (object: Journey) in
+                JourneyCard(journey: object)
+            }
+        }
+        .padding()
+        .padding(.top)
+    }
+    
+    func InactiveJourneyView() -> some View {
+        LazyVStack(spacing: 10) {
+            ServeJourneyData(activePredicate: false) { (object: Journey) in
                 JourneyCard(journey: object)
             }
         }
