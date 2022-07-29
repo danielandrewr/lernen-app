@@ -76,6 +76,11 @@ struct AddNewPath: View {
                             print("Lernen: Failed to save to context")
                         }
                         
+                        if newPath.notificationEnabled == true {
+                            NotificationManager.instance.createPathReminder(pathName: newPath.pathName ?? "No Value", pathDate: newPath.pathDate ?? Date(), minuteInterval: 3)
+                        }
+                    
+                        NotificationManager.instance.pathFinishedCreatingNotification(pathName: newPath.pathName ?? "No Value")
                         dismissModal()
                     } label: {
                         Text("Add")
