@@ -57,7 +57,6 @@ struct AddNewPath: View {
             }
             .navigationTitle("Create New Path")
             .navigationBarTitleDisplayMode(.inline)
-            .interactiveDismissDisabled()
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
@@ -68,7 +67,7 @@ struct AddNewPath: View {
                         newPath.pathDate = pathDate
                         newPath.isFinished = false
                         newPath.notificationEnabled = enableNotification
-
+                        
                         do {
                             try persistentContainer.save()
                         } catch let error as NSError {

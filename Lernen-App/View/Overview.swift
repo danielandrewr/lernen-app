@@ -19,8 +19,6 @@ struct Overview: View {
         return Float(finishedPath / totalPath)
     }
     
-    @State var activeJourney: String = "MVVM"
-    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             LazyVStack(spacing: 20, pinnedViews: [.sectionHeaders]) {
@@ -61,9 +59,12 @@ struct Overview: View {
                         in: Circle()
                     )
                     .offset(x: -5, y: -10)
-            })
+            }).sheet(isPresented: $journeyViewModel.addNewJourney) {
+                AddNewJourney()
+            }
             .padding(),
             alignment: .bottomTrailing
+            
         )
     }
     
@@ -77,7 +78,7 @@ struct Overview: View {
                 HStack {
                     VStack(alignment: .leading) {
                         Text("Active Journey: ")
-                        Text("\(activeJourney)")
+                        Text("\(journeyViewModel.activeJourney?.journeyName ?? "Not Found")")
                             .foregroundColor(Color.Tertiary)
                             .fontWeight(.semibold)
                         

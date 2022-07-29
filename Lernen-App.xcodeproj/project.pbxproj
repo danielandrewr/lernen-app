@@ -112,6 +112,8 @@
 		26529CC7288FA4EA003170BD /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				26529CD9288FAC25003170BD /* ServePathData.swift */,
+				26063F272892D966001A1519 /* ServeJourneyData.swift */,
 				26529CCF288FA570003170BD /* PathViewModel.swift */,
 				26529CD1288FA57C003170BD /* JourneyViewModel.swift */,
 				26529CD7288FA5F1003170BD /* TimeViewModel.swift */,
@@ -144,8 +146,6 @@
 		26529CCA288FA502003170BD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				26529CD9288FAC25003170BD /* ServePathData.swift */,
-				26063F272892D966001A1519 /* ServeJourneyData.swift */,
 				26529CBC288FA3BB003170BD /* Persistence.swift */,
 				26529CBE288FA3BB003170BD /* Lernen_App.xcdatamodeld */,
 			);

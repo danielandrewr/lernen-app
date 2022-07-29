@@ -8,6 +8,7 @@
         <attribute name="journeyId" optional="YES" attributeType="String"/>
         <attribute name="journeyName" optional="YES" attributeType="String"/>
         <attribute name="journeyTotalPath" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="path" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Path" inverseName="journey" inverseEntity="Path"/>
     </entity>
     <entity name="Path" representedClassName="Path" syncable="YES" codeGenerationType="class">
         <attribute name="isFinished" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -16,9 +17,10 @@
         <attribute name="pathDescription" optional="YES" attributeType="String"/>
         <attribute name="pathId" optional="YES" attributeType="String"/>
         <attribute name="pathName" optional="YES" attributeType="String"/>
+        <relationship name="journey" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Journey" inverseName="path" inverseEntity="Journey"/>
     </entity>
     <elements>
-        <element name="Journey" positionX="-54" positionY="27" width="128" height="134"/>
-        <element name="Path" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="Journey" positionX="-54" positionY="27" width="128" height="149"/>
+        <element name="Path" positionX="-63" positionY="-18" width="128" height="134"/>
     </elements>
 </model>

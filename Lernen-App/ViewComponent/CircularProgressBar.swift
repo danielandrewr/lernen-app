@@ -12,6 +12,7 @@ struct CircularProgressBar: View {
     // MARK: ProgressBar Indicators
     @State var progress: Float
     @State var circleProgress: Float = 0.0
+    @State var counter = 0
     
     var body: some View {
         ZStack {
@@ -38,6 +39,16 @@ struct CircularProgressBar: View {
                 .rotationEffect(.degrees(-90))
                 .animation(.easeOut, value: progress)
                 .onAppear(perform: { self.animateProgressBar() })
+            
+            Text(" \(Int(self.counter * 100))%")
+                .font(.system(size: 60))
+                .fontWeight(.bold)
+                .foregroundColor(Color.Primary)
+                .padding()
+                .centerHelper()
+                .onAppear {
+                    self.animateProgressCount(counter: self.$counter)
+                }
         }
     }
     
@@ -49,6 +60,17 @@ struct CircularProgressBar: View {
                     timer.invalidate()
                 } else {
                     self.circleProgress += self.progress
+                }
+            }
+        }
+    }
+    
+    func animateProgressCount(counter: Binding<Int>) {
+        _ = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { timer in
+            withAnimation {
+                counter.wrappedValue += 1
+                if counter.wrappedValue == Int(progress) {
+                    timer.invalidate()
                 }
             }
         }

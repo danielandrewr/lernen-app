@@ -13,7 +13,7 @@ struct JourneyView: View {
     @StateObject var timeModel = TimeViewModel()
     @StateObject var pathModel = PathViewModel()
     
-    // MARK: Core Date MOC
+    // MARK: Core Data MOC
     @Environment(\.managedObjectContext) var persistentContainer
     
     // MARK: Namespaces
