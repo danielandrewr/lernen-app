@@ -8,15 +8,18 @@
 import Foundation
 import UserNotifications
 
-class NotificationManager {
+class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
     
     static let instance = NotificationManager()
     let notificationCenter: UNUserNotificationCenter
     let notificationOptions: UNAuthorizationOptions
     
-    init() {
+    var handleNotification: ((UNNotification) -> Void)?
+    
+    init(handleNotification: ((UNNotification) -> Void)? = nil) {
         self.notificationCenter = UNUserNotificationCenter.current()
         self.notificationOptions = [.alert, .sound, .badge]
+        self.handleNotification = handleNotification
     }
     
     func requestPermission(completion: @escaping (Bool, Error?) -> Void) {
@@ -34,8 +37,9 @@ class NotificationManager {
         let content = UNMutableNotificationContent()
         content.title = "\(pathName) has been created!"
         content.body = "We will remind you when it is time to get learning 📚"
+        content.sound = .default
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2.0, repeats: false)
                 
         self.scheduleNotification(id: UUID().uuidString, content: content, trigger: trigger)
     }
@@ -45,6 +49,7 @@ class NotificationManager {
         content.title = "\(pathName) is starting soon 🔥"
         content.body = "Get yourself ready before hopping in to learning session!"
         content.badge = 1
+        content.sound = .default
         
         let triggerDate = pathDate.addingTimeInterval(Double(-(minuteInterval * 60)))
         let calendar = Calendar.current
@@ -55,5 +60,16 @@ class NotificationManager {
         )
         
         self.scheduleNotification(id: UUID().uuidString, content: content, trigger: trigger)
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.banner, .badge, .sound])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        if let handleNotification = handleNotification {
+            handleNotification(response.notification)
+        }
+        completionHandler()
     }
 }

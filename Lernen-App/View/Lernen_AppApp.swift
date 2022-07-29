@@ -10,8 +10,12 @@ import SwiftUI
 @main
 struct Lernen_AppApp: App {
     let persistenceController = PersistenceController.shared
+    private let notificationManager = NotificationManager()
     
+    // MARK: Lernen Launch Startup Initialization
     init() {
+        // MARK: NotificationCenter delegate
+        notificationManager.notificationCenter.delegate = notificationManager
         NotificationManager.instance.requestPermission() { (isAllowed, error) in
             if let error = error {
                 print(error.localizedDescription)
