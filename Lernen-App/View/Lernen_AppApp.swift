@@ -10,6 +10,10 @@ import SwiftUI
 @main
 struct Lernen_AppApp: App {
     let persistenceController = PersistenceController.shared
+    
+    init() {
+        NotificationManager.instance.requestPermission()
+    }
 
     var body: some Scene {
         WindowGroup {

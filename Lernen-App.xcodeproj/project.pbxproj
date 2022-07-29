@@ -24,6 +24,7 @@
 		26529CDA288FAC25003170BD /* ServePathData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26529CD9288FAC25003170BD /* ServePathData.swift */; };
 		26529CDC288FB969003170BD /* AddNewPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26529CDB288FB969003170BD /* AddNewPath.swift */; };
 		26529CE4288FDAB3003170BD /* Overview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26529CE3288FDAB3003170BD /* Overview.swift */; };
+		26700E71289370760012EF7D /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26700E70289370760012EF7D /* NotificationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		26529CD9288FAC25003170BD /* ServePathData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServePathData.swift; sourceTree = "<group>"; };
 		26529CDB288FB969003170BD /* AddNewPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPath.swift; sourceTree = "<group>"; };
 		26529CE3288FDAB3003170BD /* Overview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Overview.swift; sourceTree = "<group>"; };
+		26700E70289370760012EF7D /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		26529CB2288FA3B9003170BD /* Lernen-App */ = {
 			isa = PBXGroup;
 			children = (
+				26700E6F289370670012EF7D /* Manager */,
 				26529CCA288FA502003170BD /* Model */,
 				26529CC9288FA4F7003170BD /* Helper */,
 				26529CC8288FA4F1003170BD /* View */,
@@ -144,6 +147,14 @@
 				26529CBE288FA3BB003170BD /* Lernen_App.xcdatamodeld */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		26700E6F289370670012EF7D /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				26700E70289370760012EF7D /* NotificationManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,6 +233,7 @@
 				26529CCE288FA54F003170BD /* ColorHelper.swift in Sources */,
 				26529CD0288FA570003170BD /* PathViewModel.swift in Sources */,
 				26529CCD288FA54F003170BD /* FrameHelper.swift in Sources */,
+				26700E71289370760012EF7D /* NotificationManager.swift in Sources */,
 				26529CE4288FDAB3003170BD /* Overview.swift in Sources */,
 				26529CB6288FA3B9003170BD /* ContentView.swift in Sources */,
 				26529CD4288FA595003170BD /* JourneyView.swift in Sources */,
