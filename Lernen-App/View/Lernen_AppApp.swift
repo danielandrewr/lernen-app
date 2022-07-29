@@ -12,7 +12,14 @@ struct Lernen_AppApp: App {
     let persistenceController = PersistenceController.shared
     
     init() {
-        NotificationManager.instance.requestPermission()
+        NotificationManager.instance.requestPermission() { (isAllowed, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                print("Error while attempting to request authorization to user!")
+            } else {
+                print("Lernen: Authorization request performed!")
+            }
+        }
     }
 
     var body: some Scene {

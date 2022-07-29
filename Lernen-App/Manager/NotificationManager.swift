@@ -11,18 +11,24 @@ import UserNotifications
 class NotificationManager {
     
     static let instance = NotificationManager()
+    let notificationCenter: UNUserNotificationCenter
+    let notificationOptions: UNAuthorizationOptions
+    var handleNotification: ((UNNotification) -> Void)?
     
-    func requestPermission() {
-        let notificationCenter = UNUserNotificationCenter.current()
-        let options: UNAuthorizationOptions = [.alert, .badge, .sound]
-        
-        notificationCenter.requestAuthorization(options: options) { handler, error in
-            if let error = error {
-                print(error.localizedDescription)
-                print("Lernen: Failed to authorize notification permission!")
-            } else {
-                print("Successfully prompted notification permission!")
-            }
+    init (handleNotification: ((UNNotification) -> Void)? = nil) {
+        self.notificationCenter = UNUserNotificationCenter.current()
+        self.notificationOptions = [.alert, .badge, .sound]
+        self.handleNotification = handleNotification
+    }
+    
+    func requestPermission(completion: @escaping (Bool, Error?) -> Void) {
+        notificationCenter.requestAuthorization(options: notificationOptions) { (isAllowed, error) in
+            completion(isAllowed, error)
         }
+    }
+    
+    public func scheduleNotification(id: String, content: UNNotificationContent, trigger: UNNotificationTrigger) {
+        let requestNotification = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
+        notificationCenter.add(requestNotification)
     }
 }
