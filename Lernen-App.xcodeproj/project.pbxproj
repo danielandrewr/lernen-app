@@ -26,6 +26,7 @@
 		26529CE4288FDAB3003170BD /* Overview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26529CE3288FDAB3003170BD /* Overview.swift */; };
 		26700E71289370760012EF7D /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26700E70289370760012EF7D /* NotificationManager.swift */; };
 		26700E732893A0380012EF7D /* AddNewJourney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26700E722893A0380012EF7D /* AddNewJourney.swift */; };
+		26700E75289595580012EF7D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26700E74289595580012EF7D /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		26529CE3288FDAB3003170BD /* Overview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Overview.swift; sourceTree = "<group>"; };
 		26700E70289370760012EF7D /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		26700E722893A0380012EF7D /* AddNewJourney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewJourney.swift; sourceTree = "<group>"; };
+		26700E74289595580012EF7D /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				26700E70289370760012EF7D /* NotificationManager.swift */,
+				26700E74289595580012EF7D /* CoreDataManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				26700E732893A0380012EF7D /* AddNewJourney.swift in Sources */,
 				26529CCE288FA54F003170BD /* ColorHelper.swift in Sources */,
 				26529CD0288FA570003170BD /* PathViewModel.swift in Sources */,
+				26700E75289595580012EF7D /* CoreDataManager.swift in Sources */,
 				26529CCD288FA54F003170BD /* FrameHelper.swift in Sources */,
 				26700E71289370760012EF7D /* NotificationManager.swift in Sources */,
 				26529CE4288FDAB3003170BD /* Overview.swift in Sources */,
