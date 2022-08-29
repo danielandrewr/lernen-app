@@ -26,6 +26,7 @@
 		26529CE4288FDAB3003170BD /* Overview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26529CE3288FDAB3003170BD /* Overview.swift */; };
 		26700E71289370760012EF7D /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26700E70289370760012EF7D /* NotificationManager.swift */; };
 		26700E732893A0380012EF7D /* AddNewJourney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26700E722893A0380012EF7D /* AddNewJourney.swift */; };
+		269EA4BB28BC6C2200AE5476 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269EA4BA28BC6C2200AE5476 /* APIManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		26529CE3288FDAB3003170BD /* Overview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Overview.swift; sourceTree = "<group>"; };
 		26700E70289370760012EF7D /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		26700E722893A0380012EF7D /* AddNewJourney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewJourney.swift; sourceTree = "<group>"; };
+		269EA4BA28BC6C2200AE5476 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 			children = (
 				26700E70289370760012EF7D /* NotificationManager.swift */,
 				26529CBC288FA3BB003170BD /* Persistence.swift */,
+				269EA4BA28BC6C2200AE5476 /* APIManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				26529CB6288FA3B9003170BD /* ContentView.swift in Sources */,
 				26529CD4288FA595003170BD /* JourneyView.swift in Sources */,
 				26529CDA288FAC25003170BD /* ServePathData.swift in Sources */,
+				269EA4BB28BC6C2200AE5476 /* APIManager.swift in Sources */,
 				26529CD8288FA5F1003170BD /* TimeViewModel.swift in Sources */,
 				26063F282892D966001A1519 /* ServeJourneyData.swift in Sources */,
 				26529CB4288FA3B9003170BD /* Lernen_AppApp.swift in Sources */,

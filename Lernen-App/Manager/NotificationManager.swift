@@ -11,6 +11,7 @@ import UserNotifications
 class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
     
     static let instance = NotificationManager()
+    
     let notificationCenter: UNUserNotificationCenter
     let notificationOptions: UNAuthorizationOptions
     
@@ -45,20 +46,29 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
     }
     
     public func createPathReminder(pathName: String, pathDate: Date, minuteInterval: Double) {
+        // MARK: Content yang akan ditampilkan oleh notifikasi
+        /*
+         Title, Subtitle, Body, Sound
+         */
         let content = UNMutableNotificationContent()
         content.title = "\(pathName) is starting soon 🔥"
         content.body = "Get yourself ready before hopping in to learning session!"
         content.badge = 1
         content.sound = .default
         
+        // MARK: Calendar Trigger
+        // Notifikasi akan ditampilkan (minuteInterval) menit sebelum pathDate
         let triggerDate = pathDate.addingTimeInterval(Double(-(minuteInterval * 60)))
         let calendar = Calendar.current
+        
+        // Menyamakan dateComponents dari pathDate dengan triggerDate dan menampilkan notifikasi yang tidak diulang
         let trigger = UNCalendarNotificationTrigger(
             dateMatching: calendar.dateComponents([.timeZone, .year, .month, .day, .hour, .minute, .second],
             from: triggerDate),
             repeats: false
         )
         
+        // MARK: Schedule notifikasi dengan content dan trigger yang sudah di-assign sebelumnya menggunakan fungsi scheduleNotification
         self.scheduleNotification(id: UUID().uuidString, content: content, trigger: trigger)
     }
     
