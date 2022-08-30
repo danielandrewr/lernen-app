@@ -16,11 +16,14 @@ class APIManager: NSObject {
     private let networkURL: URL
     private let handleSession: ((URLSession) -> Void)?
     
+    private let semaphore: Semaphore
+    
     init(networkToken: NSQueryGenerationToken, networkURL: URL, session: Int, handleSession: ((URLSession) -> Void)?) {
         self.networkToken = networkToken
         self.networkURL = networkURL
         self.networkSession = session
         self.handleSession = handleSession
+        self.semaphore = Semaphore(bitPattern: 3)!
     }
     
     // MARK: Requests Fetch Function
@@ -39,13 +42,19 @@ class APIManager: NSObject {
             let json = try? JSONSerialization.jsonObject(with: data!) as? [String:Any]
             
             let requestName = json!["requestsName"] as! [String:Any]
-            let body = requestName["value"] as! String
-            
+            //let body = requestName["value"] as! String
             
             
             // MARK: HERE CONSUMES THE DATA
             // Lanjut di sini mark
         }.resume()
         
+    }
+    
+    public func fetchAll(idx: Int, requests: NSArray) {
+        let fetchesCount = requests.count
+        
+        var requests = URLRequest(url: self.networkURL)
+        requests.httpMethod = "GET"
     }
 }
